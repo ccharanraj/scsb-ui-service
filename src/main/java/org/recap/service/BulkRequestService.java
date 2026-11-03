@@ -31,8 +31,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -113,7 +113,7 @@ public class BulkRequestService {
 
                 String bulkRequestItemUrl = scsbUrl + ScsbConstants.BULK_REQUEST_ITEM_URL;
                 HttpEntity requestEntity = new HttpEntity<>(restHeaderService.getHttpHeaders());
-                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(bulkRequestItemUrl).queryParam("bulkRequestId", savedBulkRequestItemEntity.getId());
+                UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(bulkRequestItemUrl).queryParam("bulkRequestId", savedBulkRequestItemEntity.getId());
                 getRestTemplate().exchange(builder.build().encode().toUri(), HttpMethod.POST, requestEntity, BulkRequestResponse.class);
 
                 bulkRequestForm.setSubmitted(true);

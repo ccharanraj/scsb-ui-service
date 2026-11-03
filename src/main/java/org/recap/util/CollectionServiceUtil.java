@@ -1,6 +1,6 @@
 package org.recap.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.recap.PropertyKeyConstants;
@@ -118,7 +118,7 @@ public class CollectionServiceUtil {
         try {
             HttpEntity requestEntity = new HttpEntity<>(getRestHeaderService().getHttpHeaders());
 
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(getScsbUrl() + ScsbConstants.SCSB_UPDATE_CGD_URL)
+            UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(getScsbUrl() + ScsbConstants.SCSB_UPDATE_CGD_URL)
                     .queryParam(ScsbCommonConstants.CGD_UPDATE_ITEM_BARCODE, bibliographicMarcForm.getBarcode())
                     .queryParam(ScsbConstants.OWNING_INSTITUTION, bibliographicMarcForm.getOwningInstitution())
                     .queryParam(ScsbCommonConstants.OLD_CGD, bibliographicMarcForm.getCollectionGroupDesignation())
